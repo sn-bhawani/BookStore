@@ -3,8 +3,7 @@ var app = angular.module("kindle", ["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
         .when("/home", {
-            templateUrl: "home.html", // Loads all content for the main page
-            controller: "storemanager"
+            templateUrl: "home.html", // Loads all content for the main page 
         })
         .when("/about", {
             templateUrl: "about.html"
