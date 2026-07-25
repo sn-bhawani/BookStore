@@ -5,104 +5,48 @@ app.controller("storemanager", function($scope) {
 
    $scope.bookstore = [
         {
-            bookId: 1,
-            bookName: "The Mental Models",
-            authorName: "Peter Hollins",
+            id: 1,
+            name: "The Mental Models",
+            author: "Peter Hollins",
+            price: 300,
+            url: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQzhaQrqkUk_dYQICi1cWi31aTj5qRRlHgPB9qVjl76huvJVF2_YamzbeB8hj97zUTlyQNE7KYVnF54bv04GA8mFxKCLcZb"
         },
         {
-            bookId: 2,
-            bookName: "Atomic Habits",
-            authorName: "James Clear",
+            id: 2,
+            name: "Atomic Habits",
+            author: "James Clear",
+            price: 280,
+            url: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRJFUMfdTSwAJxvL5x8bGaGrKi7NDZdC2rcoruqo48DYsz1j9LmOpSFRd8ET58lSs4664PMF2fUAs9KvRYZk0l9baXk16QUrUswTeuRt7dgBtErXnTQsycWJ7vGcJ-rLt7h1ZH7efaT&usqp=CAc"
+            
         },
         {
-            bookId: 3,
-            bookName: "Deep Work",
-            authorName: "Cal Newport",
+            id: 3,
+            name: "Deep Work",
+            author: "Cal Newport",
+            price: 450,
+            url: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRYIkvv2tdqPZ51ETXXG3o4_xr6s_XkzZ-JNHEpSPHSO_33M-v3AjMIqtmBRFuIGQHPSkRLJbFNnCMhiLyqsocHnqWOG0er81IFHfvs5Q5HWpK8TVWzp-Vetg"
         },
         {
-            bookId: 4,
-            bookName: "The Psychology of Money",
-            authorName: "Morgan Housel",
+            id: 4,
+            name: "The Psychology of Money",
+            author: "Morgan Housel",
+            price: 450,
+            url: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSqSbzG0ZSo-kRkvLct3KsvrD1iyDlRxpRDcxPO5oO5-6O-5G39ABli97GHBv-BYdyDygXNYob9H3xLUO0oOyr-p4rJyr_N4rG_TBqXOF4"
+
         },
         {
-            bookId: 5,
-            bookName: "Clean Code",
-            authorName: "Robert C. Martin",
+            id: 5,
+            name: "Clean Code",
+            author: "Robert C. Martin",
+            price: 380,
+            url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRIWKAu32ANomNaPF52vJ35GOsLO1DogOjV0OLRt8cR42JE4xw8kEC7SVT1ZOBGvB9hGdnVajakQZLccHqmk_XtZV_nt-D9zy7S6vylib38k1wBcp7rvt966A"
         },
         {
-            bookId: 6,
-            bookName: "The Pragmatic Programmer",
-            authorName: "Andrew Hunt",
-        },
-        {
-            bookId: 7,
-            bookName: "You Don't Know JS",
-            authorName: "Kyle Simpson",
-        },
-        {
-            bookId: 8,
-            bookName: "Can't Hurt Me",
-            authorName: "David Goggins",
-        },
-        {
-            bookId: 9,
-            bookName: "Show Your Work!",
-            authorName: "Austin Kleon",
-        },
-        {
-            bookId: 10,
-            bookName: "The Alchemist",
-            authorName: "Paulo Coelho",
-        },
-        {
-            bookId: 11,
-            bookName: "Zero to One",
-            authorName: "Peter Thiel",
-        },
-        {
-            bookId: 12,
-            bookName: "Start with Why",
-            authorName: "Simon Sinek",
-        },
-        {
-            bookId: 13,
-            bookName: "The Lean Startup",
-            authorName: "Eric Ries",
-        },
-        {
-            bookId: 14,
-            bookName: "Refactoring",
-            authorName: "Martin Fowler",
-        },
-        {
-            bookId: 15,
-            bookName: "Design Patterns",
-            authorName: "Erich Gamma",
-        },
-        {
-            bookId: 16,
-            bookName: "Thinking, Fast and Slow",
-            authorName: "Daniel Kahneman",
-        },
-        {
-            bookId: 17,
-            bookName: "Grit",
-            authorName: "Angela Duckworth",
-        },
-        {
-            bookId: 18,
-            bookName: "Ego Is the Enemy",
-            authorName: "Ryan Holiday",
-        },
-        {
-            bookId: 19,
-            bookName: "Dune",
-            authorName: "Frank Herbert",
-        },
-        {
-            bookId: 20,
-            bookName: "To Kill a Mockingbird",
-            authorName: "Harper Lee",
+            id: 6,
+            name: "The Pragmatic Programmer",
+            author: "Andrew Hunt",
+            price: 1000,
+            url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR_hH8We57dd286hnqQFHJY2l2K6kqHosdCGk_IxM4kLFmSNfrSEAfLY-IMeGkmkgqRbMPvFgQtvFmDIuQjGbsm79pZPMzgFM8GxAPqH0VSKahtGBgpVP0k"
         }
     ];
 
