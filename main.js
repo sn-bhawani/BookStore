@@ -1,4 +1,4 @@
-var app = angular.module("bookStore", []);
+var app = angular.module("kindle", []);
 app.controller("storemanager", function($scope) {
 
     $scope.title = "Book Store";
@@ -45,6 +45,13 @@ app.controller("storemanager", function($scope) {
             id: 6,
             name: "The Pragmatic Programmer",
             author: "Andrew Hunt",
+            price: 1000,
+            url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR_hH8We57dd286hnqQFHJY2l2K6kqHosdCGk_IxM4kLFmSNfrSEAfLY-IMeGkmkgqRbMPvFgQtvFmDIuQjGbsm79pZPMzgFM8GxAPqH0VSKahtGBgpVP0k"
+        },
+        {
+            id: 7,
+            name: "Good Vibe,Good Life",
+            author: "Vex King",
             price: 1000,
             url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR_hH8We57dd286hnqQFHJY2l2K6kqHosdCGk_IxM4kLFmSNfrSEAfLY-IMeGkmkgqRbMPvFgQtvFmDIuQjGbsm79pZPMzgFM8GxAPqH0VSKahtGBgpVP0k"
         }
