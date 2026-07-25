@@ -1,5 +1,4 @@
 var app = angular.module("kindle", ["ngRoute"]);
-
 app.config(function($routeProvider) {
     $routeProvider
         .when("/home", {
@@ -17,9 +16,10 @@ app.config(function($routeProvider) {
             templateUrl: "contact.html"
         })
         .otherwise({
-            redirectTo: "home.html" // Defaults to the home page
+            redirectTo: "/home" // Points to the route path, not the file
         });
 });
+
 
 app.controller("storemanager", function($scope) {
 
