@@ -50,6 +50,7 @@ app.controller("storemanager", function($scope) {
         },
         {
             id: 7,
+<<<<<<< HEAD
             name: "The Mental Models",
             author: "Peter Hollins",
             price: 300,
@@ -89,6 +90,10 @@ app.controller("storemanager", function($scope) {
             id: 6,
             name: "The Pragmatic Programmer",
             author: "Andrew Hunt",
+=======
+            name: "Good Vibe,Good Life",
+            author: "Vex King",
+>>>>>>> about-conatct
             price: 1000,
             url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR_hH8We57dd286hnqQFHJY2l2K6kqHosdCGk_IxM4kLFmSNfrSEAfLY-IMeGkmkgqRbMPvFgQtvFmDIuQjGbsm79pZPMzgFM8GxAPqH0VSKahtGBgpVP0k"
         }
