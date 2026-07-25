@@ -17,7 +17,7 @@ app.config(function($routeProvider) {
             templateUrl: "contact.html"
         })
         .otherwise({
-            redirectTo: "/" // Defaults to the home page
+            redirectTo: "index.html" // Defaults to the home page
         });
 });
 
