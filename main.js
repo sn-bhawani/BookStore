@@ -1,8 +1,9 @@
 var app = angular.module("kindle", ["ngRoute"]);
+
 app.config(function($routeProvider) {
     $routeProvider
         .when("/home", {
-            templateUrl: "home.html", // Loads all content for the main page 
+            templateUrl: "home.html", 
             controller: "storemanager" 
         })
         .when("/about", {
@@ -16,16 +17,15 @@ app.config(function($routeProvider) {
             templateUrl: "contact.html"
         })
         .otherwise({
-            redirectTo: "/home" // Points to the route path, not the file
+            redirectTo: "/home" 
         });
 });
-
 
 app.controller("storemanager", function($scope) {
 
     $scope.title = "Book Store";
 
-   $scope.bookstore = [
+    $scope.bookstore = [
         {
             id: 1,
             name: "The Mental Models",
@@ -39,7 +39,6 @@ app.controller("storemanager", function($scope) {
             author: "James Clear",
             price: 280,
             url: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRJFUMfdTSwAJxvL5x8bGaGrKi7NDZdC2rcoruqo48DYsz1j9LmOpSFRd8ET58lSs4664PMF2fUAs9KvRYZk0l9baXk16QUrUswTeuRt7dgBtErXnTQsycWJ7vGcJ-rLt7h1ZH7efaT&usqp=CAc"
-            
         },
         {
             id: 3,
@@ -54,7 +53,6 @@ app.controller("storemanager", function($scope) {
             author: "Morgan Housel",
             price: 450,
             url: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSqSbzG0ZSo-kRkvLct3KsvrD1iyDlRxpRDcxPO5oO5-6O-5G39ABli97GHBv-BYdyDygXNYob9H3xLUO0oOyr-p4rJyr_N4rG_TBqXOF4"
-
         },
         {
             id: 5,
@@ -83,7 +81,6 @@ app.controller("storemanager", function($scope) {
             author: "James Clear",
             price: 280,
             url: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRJFUMfdTSwAJxvL5x8bGaGrKi7NDZdC2rcoruqo48DYsz1j9LmOpSFRd8ET58lSs4664PMF2fUAs9KvRYZk0l9baXk16QUrUswTeuRt7dgBtErXnTQsycWJ7vGcJ-rLt7h1ZH7efaT&usqp=CAc"
-            
         },
         {
             id: 9,
@@ -98,7 +95,6 @@ app.controller("storemanager", function($scope) {
             author: "Morgan Housel",
             price: 450,
             url: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSqSbzG0ZSo-kRkvLct3KsvrD1iyDlRxpRDcxPO5oO5-6O-5G39ABli97GHBv-BYdyDygXNYob9H3xLUO0oOyr-p4rJyr_N4rG_TBqXOF4"
-
         },
         {
             id: 11,
@@ -108,10 +104,8 @@ app.controller("storemanager", function($scope) {
             url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRIWKAu32ANomNaPF52vJ35GOsLO1DogOjV0OLRt8cR42JE4xw8kEC7SVT1ZOBGvB9hGdnVajakQZLccHqmk_XtZV_nt-D9zy7S6vylib38k1wBcp7rvt966A"
         },
         {
-            id: 6,
-            name: "The Pragmatic Programmer",
-            author: "Andrew Hunt",
-            name: "Good Vibe,Good Life",
+            id: 12,
+            name: "Good Vibe, Good Life",
             author: "Vex King",
             price: 1000,
             url: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR_hH8We57dd286hnqQFHJY2l2K6kqHosdCGk_IxM4kLFmSNfrSEAfLY-IMeGkmkgqRbMPvFgQtvFmDIuQjGbsm79pZPMzgFM8GxAPqH0VSKahtGBgpVP0k"
@@ -140,7 +134,5 @@ app.controller("storemanager", function($scope) {
         "Frank Herbert",
         "Harper Lee"
     ];
-    
-
 
 });
