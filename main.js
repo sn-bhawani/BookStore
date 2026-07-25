@@ -4,6 +4,7 @@ app.config(function($routeProvider) {
     $routeProvider
         .when("/home", {
             templateUrl: "home.html", // Loads all content for the main page 
+            controller: "storemanager" 
         })
         .when("/about", {
             templateUrl: "about.html"
