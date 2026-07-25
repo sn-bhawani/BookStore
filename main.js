@@ -1,4 +1,4 @@
-var app = angular.module("kindle", []);
+var app = angular.module("kindle", ["ngRoute"]);
 
 app.config(function($routeProvider) {
     $routeProvider
