@@ -6,7 +6,261 @@
     <title>BookStore | Contact Us</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="main.js"></script>
-    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geomini:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Geomini', sans-serif;
+            user-select: none;
+        }
+        
+        :root {
+            --primary: #371947;
+            --secondary: #4f3e58;
+            --gray: #5b5b5b;
+        }
+        
+        body, html {
+            background-color: white;
+            overflow-x: hidden; /* Prevents horizontal scroll on mobile */
+        }
+        
+        header {
+            background-color: var(--primary); 
+            display: grid;
+            box-shadow: -2px 5px 0px 0px #4abdff1a;
+        }
+        
+        header .header-top {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid white;
+            color: white;
+            flex-wrap: wrap; /* Allows wrapping on tiny screens */
+        }
+        
+        header nav {
+            background-color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap; /* Wraps nav links on mobile */
+            gap: 10px;
+            padding: 0 10px;
+        }
+        
+        ul li {
+            padding: 12px 20px;
+            transition: .4s ease-in-out;
+        }
+        
+        ul li:hover {
+            background-color: white;
+            color: black;
+        }
+        
+        ul li:hover a {
+            color: var(--primary);
+        }
+        
+        ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* SECTION */
+        section {
+            margin-top: 60px;
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 0 5%; /* Fluid padding for all sections */
+        }
+        
+        section#overview {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        section#overview img {
+            width: 100%;
+            max-width: 400px; /* Replaced fixed width */
+            height: auto;
+        }
+        
+        section#overview h1 {
+            line-height: 1.5;
+            text-align: start;
+            color: var(--gray);
+        }
+
+        section .title {
+            padding: 10px 20px;
+            color: orange;
+            min-width: 200px;
+            max-width: fit-content;
+            box-shadow: -6px 3px 3px 0px #00000026;
+            border-bottom: 4px solid orange;
+            margin-bottom: 30px;
+        }
+
+        /* Responsive Books Grid */
+        .books_container {
+            display: grid;
+            /* Auto-fit creates columns dynamically based on screen width */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
+        }
+        
+        .books_container .books_item {
+            background-color: white;
+            height: auto;
+            width: 100%; /* Fills the grid track */
+            border: 1px solid #fafafa;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: .4s ease-in-out;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .books_container .books_item:hover {
+            transform: scale(1.05); /* Slightly safer scale for mobile/tablet */
+            box-shadow: 0px 4px 10px #00000026;
+            background-color: #fafafa;
+            z-index: 2;
+        }
+        
+        .books_container .books_item:hover .book-data {
+            color: black;
+        }
+        
+        .books_container .books_item img {
+            width: 100%;
+            height: 250px;
+            object-fit: fill; /* Ensures cover images aren't distorted */
+            transition: .4s ease-in-out;
+        }
+
+        .books_item .book-data {
+            padding: 15px 10px;
+            display: grid;
+            gap: 10px;
+        }
+        
+        .book-data .book-price {
+            color: orange;
+            font-size: 20px;
+        }
+
+        .books_item .add-to-cart {
+            padding: 12px;
+            background-color: #f0f0f0;
+            color: black;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: .2s ease-in-out;
+            margin-top: auto;
+        }
+        
+        .books_container .books_item:hover img {
+            transform: scale(0.9);
+            opacity: .9;
+        }
+        
+        .books_container .books_item:hover .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .text-center {
+            text-align: center;
+        } 
+
+        #about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        #about img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #about .about-container {
+            position: relative;
+            display: grid;
+            gap: 30px;
+        }
+        
+        .about-container h1 {
+            text-shadow: 2px 5px 1px #00000026;
+            text-transform: uppercase;
+            font-size: clamp(30px, 5vw, 60px); /* Responsive font sizing */
+        }
+        
+        .about-container .label1 {
+            color: #656665;
+        }
+        .about-container .label2 {
+            color: #4cb4e6;
+            margin-left: 50px;
+        }
+        .about-container .label3 {
+            color: #ff6504;
+            margin-left: 100px;
+        }
+
+        /* --- MEDIA QUERIES FOR MOBILE/TABLET --- */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+            }
+            
+            ul li {
+                padding: 10px;
+            }
+            
+            section#overview {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            section#overview h1 {
+                text-align: center;
+            }
+            
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            /* Reset cascading margins on small screens */
+            .about-container .label2,
+            .about-container .label3 {
+                margin-left: 0;
+            }
+        }
+    </style>
     <style>
         * {
             margin: 0;
