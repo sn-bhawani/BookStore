@@ -1,4 +1,22 @@
 var app = angular.module("kindle", []);
+
+app.config(function($routeProvider) {
+    $routeProvider
+        .when("/about", {
+            templateUrl: "about.html"
+        })
+        .when("/books", {
+            templateUrl: "books.html",
+            controller: "storemanager" // Binds your existing controller to the books page
+        })
+        .when("/contacts", {
+            templateUrl: "contacts.html"
+        })
+        .otherwise({
+            redirectTo: "/books" // Default redirect if the URL doesn't match
+        });
+});
+
 app.controller("storemanager", function($scope) {
 
     $scope.title = "Book Store";
