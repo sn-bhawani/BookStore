@@ -19,6 +19,10 @@ h1 {
     margin-bottom: 40px;
 }
 
+.header-top h1 {
+    color: white!important;
+}
+
 /* RESPONSIVE GRID */
 .products-container {
     display: grid;
