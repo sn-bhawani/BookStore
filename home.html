@@ -5,64 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookStore | HomePage</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-<!-- Add this line: -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
     <script src="main.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Geomini:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Geomini';
+            font-family: 'Geomini', sans-serif;
             user-select: none;
         }
+        
         :root {
             --primary: #371947;
             --secondary: #4f3e58;
             --gray: #5b5b5b;
         }
-        body {
+        
+        body, html {
             background-color: white;
+            overflow-x: hidden; /* Prevents horizontal scroll on mobile */
         }
+        
         header {
             background-color: var(--primary); 
             display: grid;
             box-shadow: -2px 5px 0px 0px #4abdff1a;
         }
+        
         header .header-top {
             display: flex;
             gap: 20px;
             justify-content: center;
+            align-items: center;
             text-align: center;
             padding: 10px;
             border-bottom: 1px solid white;
             color: white;
+            flex-wrap: wrap; /* Allows wrapping on tiny screens */
         }
-        .header-top h1 {
-            place-content: center;
-        }
+        
         header nav {
             background-color: var(--secondary);
         }
+        
         nav ul {
             display: flex;
             list-style: none;
             align-items: center;
+            justify-content: center;
+            flex-wrap: wrap; /* Wraps nav links on mobile */
             gap: 10px;
-            place-content: center;
+            padding: 0 10px;
         }
+        
         ul li {
             padding: 12px 20px;
             transition: .4s ease-in-out;
         }
+        
         ul li:hover {
             background-color: white;
             color: black;
         }
+        
         ul li:hover a {
             color: var(--primary);
         }
+        
         ul li a {
             text-decoration: none;
             color: white;
@@ -70,21 +82,27 @@
 
         /* SECTION */
         section {
-            margin-top: 80px;
-            margin-bottom: 80px;
+            margin-top: 60px;
+            margin-bottom: 60px;
             background-color: white;
+            padding: 0 5%; /* Fluid padding for all sections */
         }
+        
         section#overview {
             display: flex;
             gap: 50px;
             justify-content: center;
             align-items: center;
         }
+        
         section#overview img {
-            width: 400px;
+            width: 100%;
+            max-width: 400px; /* Replaced fixed width */
+            height: auto;
         }
+        
         section#overview h1 {
-            line-height: 50px;
+            line-height: 1.5;
             text-align: start;
             color: var(--gray);
         }
@@ -96,90 +114,110 @@
             max-width: fit-content;
             box-shadow: -6px 3px 3px 0px #00000026;
             border-bottom: 4px solid orange;
+            margin-bottom: 30px;
         }
 
+        /* Responsive Books Grid */
         .books_container {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            margin: 20px 50px;
+            /* Auto-fit creates columns dynamically based on screen width */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
         }
+        
         .books_container .books_item {
             background-color: white;
             height: auto;
-            width: 250px;
+            width: 100%; /* Fills the grid track */
             border: 1px solid #fafafa;
-            place-content: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: .4s ease-in-out;
             padding: 10px;
             cursor: pointer;
         }
+        
         .books_container .books_item:hover {
-            scale: 1.2;
-            box-shadow: -1px 3px 1px 2px #00000017;
+            transform: scale(1.05); /* Slightly safer scale for mobile/tablet */
+            box-shadow: 0px 4px 10px #00000026;
             background-color: #fafafa;
+            z-index: 2;
         }
+        
         .books_container .books_item:hover .book-data {
             color: black;
         }
+        
         .books_container .books_item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
+            object-fit: contain; /* Ensures cover images aren't distorted */
             transition: .4s ease-in-out;
         }
 
         .books_item .book-data {
-            padding: 10px 20px;
+            padding: 15px 10px;
             display: grid;
             gap: 10px;
         }
+        
         .book-data .book-price {
             color: orange;
             font-size: 20px;
         }
 
         .books_item .add-to-cart {
-            padding: 10px;
-            background-color: #fafafa;
+            padding: 12px;
+            background-color: #f0f0f0;
             color: black;
             border: none;
             width: 100%;
             cursor: pointer;
             border-radius: 30px;
             transition: .2s ease-in-out;
+            margin-top: auto;
         }
+        
         .books_container .books_item:hover img {
-            scale: 0.8;
-            opacity: .8;
+            transform: scale(0.9);
+            opacity: .9;
         }
+        
         .books_container .books_item:hover .add-to-cart {
             background-color: var(--primary);
             color: white;
         }
+        
         .text-center {
             text-align: center;
         } 
-
-        .item-bar {
-            width: 100%;
-            height: 5px;
-        }
 
         #about {
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 40px;
+        }
+        
+        #about img {
+            max-width: 100%;
+            height: auto;
         }
 
         #about .about-container {
             position: relative;
             display: grid;
-            gap: 50px;
+            gap: 30px;
         }
+        
         .about-container h1 {
             text-shadow: 2px 5px 1px #00000026;
             text-transform: uppercase;
-            font-size: 60px;
+            font-size: clamp(30px, 5vw, 60px); /* Responsive font sizing */
         }
+        
         .about-container .label1 {
             color: #656665;
         }
@@ -192,24 +230,66 @@
             margin-left: 100px;
         }
 
+        /* --- MEDIA QUERIES FOR MOBILE/TABLET --- */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+            }
+            
+            ul li {
+                padding: 10px;
+            }
+            
+            section#overview {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            section#overview h1 {
+                text-align: center;
+            }
+            
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            /* Reset cascading margins on small screens */
+            .about-container .label2,
+            .about-container .label3 {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
-<body ng-controller="storemanager"> 
+<body ng-controller="storemanager">
+    <header>  
+        <div class="header-top">
+            <img src="books.png" style="height: 80px; filter: invert(100%);" alt="Logo">
+            <h1>Welcome to Kindle 2.0</h1>
+        </div>
+        <nav> 
+            <ul>
+                <li><a href="#!/home">Home</a></li>
+                <li><a href="#!/books">Books</a></li>
+                <li><a href="#!/authors">Authors</a></li>
+                <li><a href="#!/about">About Us</a></li>
+                <li><a href="#!/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main ng-view>
         <section id="overview">
-
              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrSIDJiRbJ3jcl0erQ7wGYaPVCuW1_0artyYCVDdo7yg&s=10" alt="Kindle">
-
             <h1>Welcome to Kindle 2.0<br> Powered By Amazon Kindle</h1>
-
         </section>
 
         <!-- Our Books -->
-
         <section id="books">
             <h2 class="title">Our Popular Books</h2>
-
             <div class="books_container">
-
                 <div class="books_item" ng-repeat="book in bookstore">
                     <img src="{{book.url}}" alt="{{book.name}}">
                     <div class="book-data">
@@ -217,25 +297,18 @@
                         <p class="text-center book-price">{{book.price}}</p>
                     </div>
                     <button class="add-to-cart">Add To Cart</button>
-                    
                 </div>
-
-                
-
             </div>
-
         </section>
 
         <section id="about">
-            <img src="bulb.png" alt="Knowledge Bulk">
-
+            <img src="bulb.png" alt="Knowledge Bulb">
             <div class="about-container">
                 <h1 class="label1">Igniting minds</h1>
                 <h1 class="label2">Shaping futures</h1>
-                <h1 class="label3">Breaking boundaries<h1>
+                <h1 class="label3">Breaking boundaries</h1>
             </div>
-
         </section>
- 
+    </main>
 </body>
 </html>
