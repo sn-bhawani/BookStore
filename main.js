@@ -2,18 +2,22 @@ var app = angular.module("kindle", ["ngRoute"]);
 
 app.config(function($routeProvider) {
     $routeProvider
+        .when("/", {
+            templateUrl: "home.html", // Loads all content for the main page
+            controller: "storemanager"
+        })
         .when("/about", {
             templateUrl: "about.html"
         })
         .when("/books", {
             templateUrl: "books.html",
-            controller: "storemanager" // Binds your existing controller to the books page
+            controller: "storemanager" 
         })
-        .when("/contacts", {
-            templateUrl: "contacts.html"
+        .when("/contact", {
+            templateUrl: "contact.html"
         })
         .otherwise({
-            redirectTo: "/books" // Default redirect if the URL doesn't match
+            redirectTo: "/" // Defaults to the home page
         });
 });
 
