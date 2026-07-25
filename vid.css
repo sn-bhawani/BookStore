@@ -33,7 +33,7 @@ h1 {
 /* UPGRADED CARD DESIGN */
 .product-card {
     background: #ffffff; 
-    border-radius: 16px; 
+    border-radius: 0px; 
     padding: 15px;
     display: flex;
     flex-direction: column; /* Pushes footer to the bottom */
@@ -56,6 +56,10 @@ h1 {
     padding: 15px;
     margin-bottom: 15px;
     overflow: hidden;
+}
+
+.label, .title {
+    color: white!important;
 }
 
 .product-card img {
