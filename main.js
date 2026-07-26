@@ -21,9 +21,13 @@ app.config(function($routeProvider) {
         });
 });
 
-app.controller("storemanager", function($scope) {
+ 
+
+app.controller("storemanager", function($scope, $http) {
 
     $scope.title = "Book Store";
+
+
 
     $scope.bookstore = [
         {
@@ -112,6 +116,64 @@ app.controller("storemanager", function($scope) {
         }
     ];
 
+
+
+  $scope.sendMessage = function() {   
+    let name = document.getElementById("name").value.trim();    
+    let whatsapp = document.getElementById("mobile").value.trim();
+    let book = document.getElementById("bookSelector").value;
+
+    console.log(whatsapp + ":" + book);
+
+    // Guard statement to stop execution if inputs are empty
+    if (!whatsapp || !book) {
+        $scope.response = "Please fill in all fields.";
+        return;
+    }
+
+
+    let bookId = $scope.getBookIndex(book.trim());
+
+    console.log("index: "+bookId);
+
+    let priceOfBook = $scope.bookstore[bookId].price;
+    let urlOfBook = $scope.bookstore[bookId].url;
+    let authorOfBook = $scope.bookstore[bookId].author;
+    
+    $scope.response = "sending...";
+
+    // Constructing the message dynamically and encoding special characters safely
+    let messageText = "Dear *"+name+"*, thank you for your interest in *" + book + "*.\n\nBook Details:\n Book Name: *"+book+"*\n Price : ₹"+priceOfBook+"\n Author Name : *"+authorOfBook+"*\n";
+    
+    // CHANGED: Fixed "+mobile+" to "+whatsapp+" and added URL encoding
+    let apiUrl = "https://garudasms.in/dashboard/kindle@notify_customers?token=SOXoM6xh&to=" 
+                 + encodeURIComponent(whatsapp) 
+                 + "&media="+encodeURIComponent(urlOfBook)
+                 + "&message=" + encodeURIComponent(messageText);
+
+        $http.post(apiUrl)
+            .then(function(response) {
+                $scope.response = "message sent successfully!";
+            })
+            .catch(function(error) {
+                // Note: If garudasms.in doesn't allow external website requests, 
+                // you may still see a "CORS Missing Allow Origin" console error here.
+                $scope.response = "error sending message";
+                console.error(error);
+            });
+    };
+
+
+
+    $scope.getBookIndex = function(name)
+    {
+        let foundBook = $scope.bookstore.find(function(book) {
+            return book.name === name;
+        });
+
+        return foundBook ? foundBook.id-1 : null;
+    };
+    
     $scope.authors = [
         "Peter Hollins",
         "James Clear",

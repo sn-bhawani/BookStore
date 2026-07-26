@@ -856,18 +856,20 @@
             <!-- Contact Form -->
             <div class="contact-form">
                 <form>
-                    <input type="text" placeholder="Your Name" required>
+                    <input id="name" type="text" placeholder="Your Name" required>
 
-                    <input type="email" placeholder="Your Email" required>
+                    <input id="email" type="email" placeholder="Your Email" required>
 
-                    <select>
+                    <input id="mobile" type="tel" placeholder="Mobile No." required>
+
+                    <select id="bookSelector">
                         <option value="">Select The Book</option>
                         <option ng-repeat="book in bookstore" value="{{book.name}}">{{book.name}}</option>
                     </select>
 
-                    <textarea placeholder="Write your message here..." rows="6" required></textarea>
+                    <textarea id="message" placeholder="Write your message here..." rows="6" required></textarea>
 
-                    <button type="submit">Send Message</button>
+                    <button ng-click="sendMessage()" type="submit">Send Message</button>
                 </form>
             </div>
 
