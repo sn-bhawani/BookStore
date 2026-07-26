@@ -855,7 +855,7 @@
 
             <!-- Contact Form -->
             <div class="contact-form">
-                <form>
+                <form name="mailingForm" ng-submit="sendMessage()" novalidate>
                     <input id="name" type="text" placeholder="Your Name" required>
 
                     <input id="email" type="email" placeholder="Your Email" required>
@@ -869,7 +869,7 @@
 
                     <textarea id="message" placeholder="Write your message here..." rows="6" required></textarea>
 
-                    <button ng-click="sendMessage()" type="submit">Send Message</button>
+                    <button type="submit">Send Message</button>
                 </form>
             </div>
 
