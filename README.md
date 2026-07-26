@@ -17,8 +17,6 @@ Welcome to the **BookStore** repository! This is a lightweight, full-stack web a
 
 **Backend API:**
 * [Node.js](https://nodejs.org/) & [Express.js](https://expressjs.com/) (REST API endpoints)
-* `axios` (For server-to-server external HTTP requests)
-* `dotenv` (Environment variable management)
 
 **Third-Party APIs:**
 * [Garuda SMS / WhatsApp API](https://garudasms.in/) (Messaging delivery)
