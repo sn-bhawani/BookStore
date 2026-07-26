@@ -856,20 +856,63 @@
             <!-- Contact Form -->
             <div class="contact-form">
                 <form name="mailingForm" ng-submit="sendMessage()" novalidate>
-                    <input id="name" type="text" placeholder="Your Name" required>
+                    <!-- Name Field -->
+                    <div>
+                        <input name="userName" ng-model="formData.name" type="text" placeholder="Your Name" required>
+                        <!-- Validation Error -->
+                        <span style="color: red; font-size: 12px;" ng-show="mailingForm.userName.$touched && mailingForm.userName.$error.required">
+                            Name is required.
+                        </span>
+                    </div>
 
-                    <input id="email" type="email" placeholder="Your Email" required>
+                    <!-- Email Field -->
+                    <div>
+                        <input name="userEmail" ng-model="formData.email" type="email" placeholder="Your Email" required>
+                        <!-- Validation Errors -->
+                        <span style="color: red; font-size: 12px;" ng-show="mailingForm.userEmail.$touched && mailingForm.userEmail.$error.required">
+                            Email is required.
+                        </span>
+                        <span style="color: red; font-size: 12px;" ng-show="mailingForm.userEmail.$touched && mailingForm.userEmail.$error.email">
+                            Please enter a valid email address.
+                        </span>
+                    </div>
 
-                    <input id="mobile" type="tel" placeholder="Mobile No." required>
+                    <!-- Mobile Field (with Regex pattern for numbers) -->
+                    <div>
+                        <input name="userMobile" ng-model="formData.mobile" type="tel" placeholder="Mobile No." ng-pattern="/^[0-9]{10,15}$/" required>
+                        <!-- Validation Errors -->
+                        <span style="color: red; font-size: 12px;" ng-show="mailingForm.userMobile.$touched && mailingForm.userMobile.$error.required">
+                            Mobile number is required.
+                        </span>
+                        <span style="color: red; font-size: 12px;" ng-show="mailingForm.userMobile.$touched && mailingForm.userMobile.$error.pattern">
+                            Please enter a valid 10-15 digit mobile number.
+                        </span>
+                    </div>
 
-                    <select id="bookSelector">
-                        <option value="">Select The Book</option>
-                        <option ng-repeat="book in bookstore" value="{{book.name}}">{{book.name}}</option>
-                    </select>
+                    <!-- Book Selector -->
+                    <div>
+                        <select name="userBook" ng-model="formData.book" required>
+                            <option value="">Select The Book</option>
+                            <option ng-repeat="book in bookstore" value="{{book.name}}">{{book.name}}</option>
+                        </select>
+                        <!-- Validation Error -->
+                        <span style="color: red; font-size: 12px;" ng-show="mailingForm.userBook.$touched && mailingForm.userBook.$error.required">
+                            Please select a book.
+                        </span>
+                    </div>
 
-                    <textarea id="message" placeholder="Write your message here..." rows="6" required></textarea>
+                    <!-- Message Textarea -->
+                    <div>
+                        <textarea name="userMessage" ng-model="formData.message" placeholder="Write your message here..." rows="6" required></textarea>
+                        <!-- Validation Error -->
+                        <span style="color: red; font-size: 12px;" ng-show="mailingForm.userMessage.$touched && mailingForm.userMessage.$error.required">
+                            Message is required.
+                        </span>
+                    </div>
 
-                    <button type="submit">Send Message</button>
+                    <!-- Submit Button (Disabled if the form is invalid) -->
+                    <button type="submit" ng-disabled="mailingForm.$invalid">Send Message</button>
+
                 </form>
             </div>
 
