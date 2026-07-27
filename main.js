@@ -120,34 +120,33 @@ app.controller("storemanager", function($scope, $http) {
 
  
     $scope.sendMessage = function() {   
-        // 1. Grab the actual HTML elements so we can clear their values later
-        let nameElement = document.getElementById("name");    
-        let mobileElement = document.getElementById("mobile");
-        let bookElement = document.getElementById("bookSelector");
+        // 2. Extract values directly from the AngularJS $scope, no DOM lookups
+        let name = $scope.formData.name;
+        let email = $scope.formData.email; // You had this in HTML but weren't using it
+        let whatsapp = $scope.formData.mobile;
+        let book = $scope.formData.book; 
 
-        // 2. Extract the values
-        let name = nameElement.value.trim();
-        let whatsapp = mobileElement.value.trim();
-        let book = bookElement.value;
-
-        console.log(whatsapp + ":" + book);
-
-        // Guard statement to stop execution if inputs are empty
-        if (!whatsapp || !book) {
+        // Guard statement
+        if (!whatsapp || !book || !name) {
             $scope.response = "Please fill in all fields.";
             return;
         }
 
-        let bookId = $scope.getBookIndex(book.trim());
-        console.log("index: " + bookId);
+        // 3. Use a safer index lookup
+        let bookIndex = $scope.bookstore.findIndex(b => b.name === book.trim());
+        
+        if (bookIndex === -1) {
+            $scope.response = "Selected book not found.";
+            return;
+        }
 
-        let priceOfBook = $scope.bookstore[bookId].price;
-        let urlOfBook = $scope.bookstore[bookId].url;
-        let authorOfBook = $scope.bookstore[bookId].author;
+        let selectedBook = $scope.bookstore[bookIndex];
+        let priceOfBook = selectedBook.price;
+        let urlOfBook = selectedBook.url;
+        let authorOfBook = selectedBook.author;
         
         $scope.response = "sending...";
 
-        // Constructing the message dynamically and encoding special characters safely
         let messageText = "Dear *" + name + "*, thank you for your interest in *" + book + "*.\n\nBook Details:\n--------------\n Book Name: *" + book + "*\n Price : ₹" + priceOfBook + "\n Author Name : *" + authorOfBook + "*\n";
         
         let apiUrl = "https://garudasms.in/dashboard/kindle@notify_customers?token=SOXoM6xh&to=" 
@@ -155,12 +154,10 @@ app.controller("storemanager", function($scope, $http) {
                     + "&media=" + encodeURIComponent(urlOfBook)
                     + "&message=" + encodeURIComponent(messageText);
 
-        // Helper function to clear the form visually and reset its state
+        // 4. Clear the form the Angular way (resetting the model)
         function clearForm() {
-            nameElement.value = "";
-            mobileElement.value = "";
-            bookElement.value = "";
-
+            $scope.formData = {}; // This instantly clears all bound inputs in the UI
+            
             if ($scope.mailingForm) {
                 $scope.mailingForm.$setPristine();
                 $scope.mailingForm.$setUntouched();
@@ -170,12 +167,12 @@ app.controller("storemanager", function($scope, $http) {
         $http.post(apiUrl)
             .then(function(response) {
                 $scope.response = "message sent successfully!";
-                clearForm(); // Clear form on success
+                clearForm(); 
             })
             .catch(function(error) {
-                // Treat the CORS error as a success to hide it from the user
+                // Treating CORS error as success per your original code logic
                 $scope.response = "message sent successfully!";
-                clearForm(); // Clear form on CORS error as well
+                clearForm(); 
             });
     };
 
