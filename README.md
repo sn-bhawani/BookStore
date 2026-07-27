@@ -28,8 +28,8 @@ A huge thank you to the team who helped build this application!
 * **[S.N. Bhawani](https://github.com/sn-bhawani/)** - Backend Developer - Team Lead + UI Enhancement
 * **[Manikanta]** - Testing UI
 * **[Shivatej](https://github.com/i-am-shiva)** - Books page
-* **[Vidhyanshi]** - CSS Styling
-* **[Pavan]** - About page
+* **[Vidhyanshi](https://github.com/vidhyanshi2303)** - CSS Styling
+* **[Pavan](https://github.com/i-am-pavan)** - About page
 * **[Poojal](https://github.com/PatelPoojal)** - Contact page
 
 *(If any contributors create GitHub accounts in the future, this section will be updated with their profiles!)*
