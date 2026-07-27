@@ -822,6 +822,7 @@
 
 <body ng-controller="storemanager">
     <!-- Contact Us Section -->
+ <!-- contact.html should ONLY contain the section, nothing else! -->
 <section id="contact">
     <div class="contact-container">
 
@@ -836,7 +837,6 @@
             <!-- Contact Information -->
             <div class="contact-info">
                 <h3>Get In Touch</h3>
-
                 <p><strong>📍 Address:</strong><br>
                 BookStore,<br>
                 Vadodara,<br>
@@ -853,29 +853,20 @@
                 9:00 AM - 8:00 PM</p>
             </div>
 
-            <style>
-                form input, select, textarea, button {
-                    width: 400px;
-                }
-            </style>
-
             <!-- Contact Form -->
             <div class="contact-form">
                 <form name="mailingForm" ng-submit="sendMessage()" novalidate>
                     <!-- Name Field -->
                     <div>
-                        <!-- Validation Error -->
                         <span style="color: red; font-size: 12px;" ng-show="mailingForm.userName.$touched && mailingForm.userName.$error.required">
                             Name is required.
                         </span>
                         <br>
-                        <input name="userName" ng-model="formData.name" type="text" placeholder="Your Name" required>
-                        
+                        <input name="userName" ng-model="formData.name" type="text" placeholder="Your Name" required style="width: 100%; max-width: 400px;">
                     </div>
 
                     <!-- Email Field -->
                     <div>
-                        <!-- Validation Errors -->
                         <span style="color: red; font-size: 12px;" ng-show="mailingForm.userEmail.$touched && mailingForm.userEmail.$error.required">
                             Email is required.
                         </span>
@@ -883,13 +874,11 @@
                             Please enter a valid email address.
                         </span>
                         <br>
-                        <input name="userEmail" ng-model="formData.email" type="email" placeholder="Your Email" required>
-                        
+                        <input name="userEmail" ng-model="formData.email" type="email" placeholder="Your Email" required style="width: 100%; max-width: 400px;">
                     </div>
 
-                    <!-- Mobile Field (with Regex pattern for numbers) -->
+                    <!-- Mobile Field -->
                     <div>
-                        <!-- Validation Errors -->
                         <span style="color: red; font-size: 12px;" ng-show="mailingForm.userMobile.$touched && mailingForm.userMobile.$error.required">
                             Mobile number is required.
                         </span>
@@ -897,43 +886,35 @@
                             Please enter a valid 10-15 digit mobile number.
                         </span>
                         <br>
-                        <input name="userMobile" ng-model="formData.mobile" type="tel" placeholder="Mobile No." ng-pattern="/^[0-9]{10,15}$/" required>
-                        
+                        <input name="userMobile" ng-model="formData.mobile" type="tel" placeholder="Mobile No." ng-pattern="/^[0-9]{10,15}$/" required style="width: 100%; max-width: 400px;">
                     </div>
 
                     <!-- Book Selector -->
                     <div>
-                         <!-- Validation Error -->
                         <span style="color: red; font-size: 12px;" ng-show="mailingForm.userBook.$touched && mailingForm.userBook.$error.required">
                             Please select a book.
                         </span>
                         <br>
-                        <select name="userBook" ng-model="formData.book" required>
+                        <select name="userBook" ng-model="formData.book" required style="width: 100%; max-width: 400px;">
                             <option value="">Select The Book</option>
                             <option ng-repeat="book in bookstore" value="{{book.name}}">{{book.name}}</option>
                         </select>
-                       
                     </div>
 
                     <!-- Message Textarea -->
                     <div>
-                        <!-- Validation Error -->
                         <span style="color: red; font-size: 12px;" ng-show="mailingForm.userMessage.$touched && mailingForm.userMessage.$error.required">
                             Message is required.
                         </span>
                         <br>
-                        <textarea name="userMessage" ng-model="formData.message" placeholder="Write your message here..." rows="6" required></textarea>
-                        
+                        <textarea name="userMessage" ng-model="formData.message" placeholder="Write your message here..." rows="6" required style="width: 100%; max-width: 400px;"></textarea>
                     </div>
 
-                    <!-- Submit Button (Disabled if the form is invalid) -->
-                    <button type="submit" ng-disabled="mailingForm.$invalid">Send Message</button>
-
+                    <button type="submit" ng-disabled="mailingForm.$invalid" style="width: 100%; max-width: 400px;">Send Message</button>
+                    <p style="margin-top: 10px; color: green;">{{response}}</p>
                 </form>
             </div>
-
         </div>
-
     </div>
 </section>
 </body>
