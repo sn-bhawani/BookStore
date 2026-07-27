@@ -120,6 +120,9 @@ app.controller("storemanager", function($scope, $http) {
 
  
     $scope.sendMessage = function() {   
+        // Ensure formData exists (fallback to empty object if undefined)
+        let data = $scope.formData || {};
+
         // 2. Extract values directly from the AngularJS $scope, no DOM lookups
         let name = $scope.formData.name;
         let email = $scope.formData.email; // You had this in HTML but weren't using it
