@@ -21,13 +21,12 @@ app.config(function($routeProvider) {
         });
 });
 
- 
-
 app.controller("storemanager", function($scope, $http) {
 
     $scope.title = "Book Store";
 
-
+    // 1. FIX: Initialize formData as an empty object so it's never undefined
+    $scope.formData = {}; 
 
     $scope.bookstore = [
         {
@@ -116,18 +115,16 @@ app.controller("storemanager", function($scope, $http) {
         }
     ];
 
-
-
- 
     $scope.sendMessage = function() {   
         // Ensure formData exists (fallback to empty object if undefined)
         let data = $scope.formData || {};
 
-        // 2. Extract values directly from the AngularJS $scope, no DOM lookups
-        let name = $scope.formData.name;
-        let email = $scope.formData.email; // You had this in HTML but weren't using it
-        let whatsapp = $scope.formData.mobile;
-        let book = $scope.formData.book; 
+        // 2. FIX: Extract values from the 'data' variable, NOT $scope.formData directly
+        let name = data.name;
+        let email = data.email; 
+        let whatsapp = data.mobile;
+        let book = data.book; 
+        let userMessage = data.message; // Grabbing the custom message if you decide to use it later
 
         // Guard statement
         if (!whatsapp || !book || !name) {
@@ -178,8 +175,6 @@ app.controller("storemanager", function($scope, $http) {
                 clearForm(); 
             });
     };
-
-
 
     $scope.getBookIndex = function(name)
     {
